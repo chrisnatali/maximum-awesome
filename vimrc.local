@@ -7,6 +7,9 @@ inoremap jj <ESC>
 "set hlsearch
 "nmap <leader>hl :let @/ = ""<CR>
 
+" disable folding
+set nofoldenable
+
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
   if ($TERM_PROGRAM == 'iTerm.app')
@@ -14,6 +17,12 @@ if (&t_Co == 256 || has('gui_running'))
   else
     colorscheme desert
   endif
+  " allows tmux active style to apply
+  " makes the background transparent (thereby letting tmux to set)
+  hi Normal ctermfg=252 ctermbg=none
+  " Set the status line color for current/not-current (NC)
+  hi StatusLine   ctermfg=15  guifg=#ffffff ctermbg=245 guibg=#4e4e4e cterm=bold gui=bold
+  hi StatusLineNC ctermfg=249 guifg=#b2b2b2 ctermbg=237 guibg=#2a2a2a cterm=none gui=none
 endif
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
